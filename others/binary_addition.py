@@ -17,27 +17,27 @@ class Solution(object):
         while idx >= 0:
             if a[idx] == b[idx] == '1':
                 if carry == 1:
-                    sum.append('1')
+                    sum.dq_append('1')
                 else:
-                    sum.append('0')
+                    sum.dq_append('0')
                     carry = 1
 
             elif a[idx] == b[idx] == '0':
                 if carry == 1:
-                    sum.append('1')
+                    sum.dq_append('1')
                     carry = 0
                 else:
-                    sum.append('0')
+                    sum.dq_append('0')
 
             elif a[idx] == '1' or b[idx] == '1':
                 if carry == 1:
-                    sum.append('0')
+                    sum.dq_append('0')
                 else:
-                    sum.append('1')
+                    sum.dq_append('1')
             idx -= 1
 
         if carry == 1:
-            sum.append('1')
+            sum.dq_append('1')
         sum.reverse()
         return sum.tostring()
 
