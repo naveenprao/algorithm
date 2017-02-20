@@ -7,6 +7,13 @@ class TreeNode(object):
         self.left = None
         self.right = None
 
+    @classmethod
+    def init(cls, val, left, right):
+        instance = cls(val)
+        instance.left = left
+        instance.right = right
+        return instance
+
 # Serialize and deserialize utility
 class Codec:
     def serialize(self, root):
