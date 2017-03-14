@@ -1,6 +1,8 @@
 import unittest
-from priority_queue import PriorityQueue
 import sys
+
+from algorithm.datastructures.priority_queue import PriorityQueue
+
 
 class Dijkstra(object):
     def __init__(self, graph):
@@ -11,7 +13,7 @@ class Dijkstra(object):
         dist_from_source = {}
         path_from_source = {}
         for key in self.graph.keys():
-        # initialize the pq with vertices and their di
+            # initialize the pq with vertices and their distance
             if key is source:
                 pq.add_item(key, 0)
             else:
@@ -49,11 +51,11 @@ class TestDijkstra(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-4, 1, 3, 2, 3
-0, 1, 2, 3, 4
-0, 1, 1, 2, 1
-POS - 0, 0, 1, 3, 4
-
-0, 1, 2, 3, 4
-1, 2, 3, 3, 4
+#
+# 4, 1, 3, 2, 3
+# 0, 1, 2, 3, 4
+# 0, 1, 1, 2, 1
+# POS - 0, 0, 1, 3, 4
+#
+# 0, 1, 2, 3, 4
+# 1, 2, 3, 3, 4
