@@ -1,5 +1,6 @@
 __author__ = 'nrao'
-import definition
+from algorithm.datastructures import definition
+
 codec = definition.Codec()
 
 def build_tree(pre_order, p_st, p_en, in_order, i_st, i_en):
@@ -29,9 +30,34 @@ def build_tree(pre_order, p_st, p_en, in_order, i_st, i_en):
 
     return builder(p_st, p_en, i_st, i_en)
 
+
+def reconstruct_tree(in_order, pre_order):
+    idx = [0]
+
+    def _helper(st_idx, en_idx):
+        # print in_order[st_idx:en_idx], st_idx, en_idx, idx[0]
+        if st_idx >= en_idx: #or idx[0] >= len(pre_order):
+            print "None", st_idx, en_idx
+            return None
+        split = inorder_lookup[pre_order[idx[0]]]
+        idx[0] += 1
+        print in_order[split], "|", in_order[st_idx:split], "|", in_order[split+1:en_idx], "|", st_idx, "|", en_idx
+        return definition.TreeNode.init(in_order[split], _helper(st_idx, split), _helper(split+1, en_idx))
+
+    return _helper(0, len(in_order))
+
 i_order = "FBAEHCDIG"
 p_order = "HBFEACDGI"
 
+inorder_lookup = dict()
+for i in range(len(i_order)):
+    inorder_lookup[i_order[i]] = i
+
 root = build_tree(p_order, 0, len(p_order), i_order, 0, len(i_order))
 serialized = codec.serialize(root)
+print serialized
+
+print i_order
+new_root = reconstruct_tree(i_order, p_order)
+serialized = codec.serialize(new_root)
 print serialized

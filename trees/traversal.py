@@ -1,5 +1,7 @@
-import definition
 from collections import deque
+
+from algorithm.datastructures import definition
+
 codec = definition.Codec()
 balanced_tree = codec.deserialize('10 5 14 1 7 11 15 # # # # # # # #')
 

@@ -1,5 +1,7 @@
-import definition
 import sys
+
+from algorithm.datastructures import definition
+
 codec = definition.Codec()
 MAX_INT = sys.maxint
 MIN_INT = -sys.maxint - 1
@@ -21,7 +23,7 @@ def build_bst(pre_order):
 
     return helper(MIN_INT, MAX_INT)
 
-pre_order_node = [43, 23, 37, 29, 31, 41, 47, 53] 38
+pre_order_node = [43, 23, 37, 29, 31, 41, 47, 53]
 
 """                                     43
 
